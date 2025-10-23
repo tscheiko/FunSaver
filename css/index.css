@@ -60,7 +60,7 @@ a.btn {
     font-family: Arial, sans-serif;
   
     /* Pingpongschläger-Cursor */
-    cursor: url('../images/cursor.png') 10 5, auto;
+    cursor: url('../images/cursor.png') 9 12, auto;
   }  
   
   
@@ -86,11 +86,67 @@ a.btn {
   .warmups{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space)}
   .warm{height:140px;border-radius:var(--radius);background:var(--card);display:flex;align-items:center;justify-content:center}
   @media (max-width:800px){.warmups{grid-template-columns:1fr}}
+
+  .warmups {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .warm {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    object-fit: cover;
+  }
+  
   
   /* Listen-Sektionen */
   .cards .list{margin:6px 0 0 18px}
   .cards .list li{margin:6px 0}
   
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+    justify-items: center;
+  }
+  
+  .gallery figure {
+    text-align: center;
+    color: white;
+  }
+  
+  .gallery img {
+    width: 100%;
+    max-width: 220px;
+    height: 220px; /* feste Höhe für gleichmäßige Größe */
+    object-fit: contain; /* sorgt dafür, dass das ganze Objekt sichtbar ist */
+    background: transparent; /* kein grauer Rand */
+    border: none;
+    border-radius: 12px;
+    box-shadow: none; /* Schatten deaktiviert, wenn du willst */
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  
+  .gallery img:hover {
+    transform: scale(1.10);
+  }
+  
+  .gallery figcaption {
+    margin-top: 0.7rem;
+    font-size: 1.1rem; /* vorher 0.95rem */
+    font-weight: 500;
+    text-align: center;
+    color: white;
+  }
+  
+
   /* Footer */
   .site-footer{margin-top:40px;border-top:1px solid #1f1f1f;background:#111}
   .site-footer .container{padding:16px;color:var(--muted);text-align:center}
