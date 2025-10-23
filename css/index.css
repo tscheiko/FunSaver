@@ -1,0 +1,97 @@
+:root{
+    --bg:#0b0b0b; --fg:#eee; --muted:#a9a9a9; --card:#161616; --accent:#4ad;
+    --radius:14px; --space:18px; --max:1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,Arial}
+  .container{max-width:var(--max);margin:auto;padding:0 var(--space)}
+  
+  /* Header */
+  .site-header{position:sticky;top:0;z-index:10;background:#111;border-bottom:1px solid #1f1f1f}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:700;letter-spacing:.5px;color:var(--accent)}
+  nav a{color:var(--fg);text-decoration:none;margin-left:18px}
+  nav a:hover{color:var(--accent)}
+  
+/* Orange Pingpongball-Button */
+.btn {
+  background-color: #FFA500;      /* kräftiges Orange */
+  color: black;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: url('../images/cursor.png') 10 5, pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+}
+
+/* Hover-Effekt */
+.btn:hover {
+  background-color: #ffb733; /* etwas helleres Orange */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Falls Buttons als <a> genutzt werden */
+a.btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+  /* Hero */
+  .hero{
+    background: url('../images/garneli.jpeg') center/cover no-repeat;
+    min-height:55vh; display:flex; align-items:center;
+    border-bottom: 1px solid #1f1f1f;
+  }
+  .hero-inner{padding:60px 20px}
+  .hero h1{margin:0 0 8px;font-size:clamp(32px,5vw,54px);text-shadow:0 3px 16px #000}
+  .hero p{color:var(--muted);margin:0;text-shadow:0 2px 10px #000}
+  
+  /* Sektion Titel */
+  section h2{margin:28px 0 12px}
+
+  body {
+    background-color: #20214F; /* RAL 5002 Ultramarinblau */
+    color: white;              /* sorgt für guten Kontrast */
+    margin: 0;
+    font-family: Arial, sans-serif;
+  
+    /* Pingpongschläger-Cursor */
+    cursor: url('../images/cursor.png') 10 5, auto;
+  }  
+  
+  
+  /* Moment / Videos */
+  .video-grid{display:grid;gap:var(--space)}
+  .video-main{height:360px;border-radius:var(--radius);background:var(--card);display:flex;align-items:center;justify-content:center}
+  .video-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space)}
+  .thumb{height:120px;border-radius:var(--radius);background:var(--card);display:flex;align-items:center;justify-content:center}
+  
+  .placeholder{color:#bbb;border:1px dashed #2a2a2a}
+  
+  @media (max-width:800px){
+    .video-main{height:240px}
+    .video-thumbs{grid-template-columns:repeat(2,1fr)}
+  }
+  
+  /* CTA */
+  .cta{margin:16px 0 8px}
+  .btn{display:inline-block;padding:10px 16px;border-radius:999px;background:var(--accent);color:#001;text-decoration:none;font-weight:600}
+  
+  /* Warnung / Warmups */
+  .warn{margin-top:10px}
+  .warmups{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space)}
+  .warm{height:140px;border-radius:var(--radius);background:var(--card);display:flex;align-items:center;justify-content:center}
+  @media (max-width:800px){.warmups{grid-template-columns:1fr}}
+  
+  /* Listen-Sektionen */
+  .cards .list{margin:6px 0 0 18px}
+  .cards .list li{margin:6px 0}
+  
+  /* Footer */
+  .site-footer{margin-top:40px;border-top:1px solid #1f1f1f;background:#111}
+  .site-footer .container{padding:16px;color:var(--muted);text-align:center}
+  
