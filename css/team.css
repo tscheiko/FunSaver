@@ -1,97 +1,14 @@
-/* === Grundlayout === */
-body {
-    background-color: #20214F; /* RAL 5002 Ultramarinblau */
-    color: white;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  
-    /* Pingpongschläger-Cursor */
-    cursor: url('../images/cursor.png') 10 5, auto;
-  }
-  
-  /* Container (zentriert Inhalte) */
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 0;
-  }
-  
-  /* === Header / Navigation === */
-  .site-header {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  nav a:hover {
-    color: #FFA500;
-  }
-  
-  /* === Überschriften und Text === */
-  h1, h2, h3 {
-    text-align: center;
-    color: #FFA500;
-  }
-  
-  p, li {
-    line-height: 1.6;
-  }
-  
-  /* === Buttons === */
-  .btn {
-    background-color: #FFA500;      /* kräftiges Orange */
-    color: black;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: url('../images/cursor.png') 10 5, pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
-  }
-  
-  .btn:hover {
-    background-color: #ffb733; /* etwas helleres Orange */
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  a.btn {
-    display: inline-block;
-    text-decoration: none;
-  }
-  
-  /* === Footer === */
-  .site-footer {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 1.5rem 0;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 3rem;
-  }
-  
+/* Team-Grid – befüllbar mit Cards/GIFs */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.member {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
