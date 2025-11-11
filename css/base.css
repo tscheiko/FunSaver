@@ -1,104 +1,310 @@
+/* =========================================================
+   BASE.CSS – Fun Saver
+   ========================================================= */
+
+/* === Variablen für Typo & vertikalen Rhythmus === */
 :root {
-    /* Typo & Spacing */
-    --fs-base: 16px;
-    --fs-h1: clamp(28px, 5vw, 56px);
-    --fs-h2: clamp(22px, 3.5vw, 34px);
-    --fs-h3: clamp(18px, 2.8vw, 24px);
-    --lh: 1.6;
-  
-    --space-xxs: .25rem;
-    --space-xs:  .5rem;
-    --space-s:   .75rem;
-    --space-m:   1rem;
-    --space-l:   1.5rem;
-    --space-xl:  2rem;
-    --space-xxl: 3rem;
-  
-    /* Farben */
-    --bg: #20214F; /* RAL 5002 Ultramarinblau */
-    --fg: #ffffff;
-    --muted: #cfd2ff;
-    --card: rgba(255,255,255,0.06);
-    --accent: #FFA500;
-  
-    --radius: 12px;
-    --max: 1200px;
-  }
-  
-  * { box-sizing: border-box; }
-  
-  html { font-size: var(--fs-base); }
-  
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: "am-novecento", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    line-height: var(--lh);
-    /* Cursor */
-    cursor: url('../images/cursor.png') 9 12, auto;
-  }
-  
-  /* Container */
-  .container { width: 90%; max-width: var(--max); margin: 0 auto; padding: var(--space-xl) 0; }
-  
-  /* Headings konsistent */
-  h1, h2, h3 {
-    font-weight: 700;
-    letter-spacing: .02em;
-    margin: 0 0 var(--space-m);
-    text-align: center;
-    color: var(--accent);
-  }
-  h1 { font-size: var(--fs-h1); margin-top: var(--space-xl); }
-  h2 { font-size: var(--fs-h2); margin-top: var(--space-l); }
-  h3 { font-size: var(--fs-h3); margin-top: var(--space-m); }
-  
-  p, ul, ol { margin: 0 0 var(--space-m); }
-  
-  /* Header/Nav */
-  .site-header {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .nav { display: flex; justify-content: space-between; align-items: center; }
-  .logo img { height: 40px; width: auto; display: block; }
-  nav a { color: #fff; text-decoration: none; margin-left: 16px; font-weight: 700; }
-  nav a:hover { color: var(--accent); }
-  
-  /* Buttons */
-  .btn {
-    background-color: var(--accent);
-    color: #111;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: .02em;
-    cursor: url('../images/cursor.png') 9 12, pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,.2);
-    transition: transform .2s ease, box-shadow .2s ease, background .3s;
-  }
-  .btn:hover {
-    background-color: #ffb733;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,.3);
-  }
-  a.btn { display: inline-block; text-decoration: none; }
-  
-  /* Footer */
-  .site-footer {
-    margin-top: var(--space-xl);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 1.5rem 0;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    border-top: 1px solid rgba(255,255,255,.15);
-  }
-  
+  /* Header-/Footer-Dicke zentral steuern */
+  --header-pad-y: 1rem;      /* vertikale Dicke von Header & Footer */
+  --header-pad-x: 1.5rem;    /* seitliche Innenabstände im Header */
+
+  /* Typo-Skala */
+  --fs-h1: clamp(40px, 6vw, 72px);
+  --fs-h2: clamp(28px, 4.5vw, 42px);
+  --fs-h3: clamp(20px, 3vw, 28px);
+
+  /* Spacing */
+  --space-xxs: .25rem;
+  --space-xs: .5rem;
+  --space-s: .75rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+}
+
+/* === Grundlayout === */
+* { box-sizing: border-box; }
+html, body { height: 100%; background: #20214F; }
+
+body {
+  background-color: #20214F; /* RAL 5002 Ultramarinblau */
+  color: white;
+  margin: 0;
+  font-family: "haas unica", sans-serif;
+  cursor: url('../images/cursor.png') 10 5, auto;
+
+  /* Sticky-Footer-Setup */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1 0 auto; }
+
+/* === Container === */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* =========================================================
+   HEADER / NAVIGATION
+   ========================================================= */
+.site-header {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  padding: var(--header-pad-y) 0;   /* Dicke via Variable */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Seitenränder im Header konsistent */
+.site-header .container {
+  padding: 0 var(--header-pad-x);
+}
+
+/* Safety: gleiche Box-Berechnung */
+.site-header .container,
+.site-header .nav { box-sizing: border-box; }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Schriftzug im Header (Logo-Text-Link) */
+.logo-text {
+  font-family: "am-novecento", sans-serif;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.2rem;       /* groß & markant */
+  text-transform: uppercase;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.logo-text:hover { color: #FFA500; }
+
+/* Navigation */
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 22px;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-family: "haas unica", sans-serif;
+  font-size: 1.25rem;      /* größer */
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+nav a:hover { color: #FFA500; }
+
+/* Mobile Header-Tuning */
+@media (max-width: 768px) {
+  .site-header { padding: 0.6rem 0; }
+  .logo-text { font-size: 1.6rem; }
+  nav a { font-size: 1rem; margin: 0 10px; }
+}
+
+/* =========================================================
+   TYPOGRAPHIE & ABSTÄNDE
+   ========================================================= */
+h1, h2, h3 {
+  margin: 0 0 var(--space-m);
+  text-align: center;
+  color: #FFA500;
+  font-family: "am-novecento", sans-serif;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+h1 { font-size: var(--fs-h1); margin-top: var(--space-xl); }
+h2 { font-size: var(--fs-h2); margin-top: var(--space-l); }
+h3 { font-size: var(--fs-h3); margin-top: var(--space-m); }
+
+p, ul, ol {
+  font-family: "haas unica", sans-serif;
+  margin: 0 0 var(--space-m);
+  line-height: 1.6;
+}
+
+ul, ol { padding-left: 1.2rem; }
+
+section { padding: var(--space-xl) 0; }
+
+/* Hero-Section ohne globales Section-Padding */
+.hero-video { padding: 0 !important; }
+
+/* Kleine Sektionserklärung */
+.section-hint {
+  margin-top: .25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  opacity: .95;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  background-color: #FFA500;
+  color: black;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: url('../images/cursor.png') 10 5, pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #ffb733;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Wordmark/Claim (falls außerhalb Hero genutzt) */
+.wordmark { margin: 0; font-family: "am-novecento", sans-serif; }
+.claim { margin: .25rem 0 0; font-family: "haas unica", sans-serif; }
+
+/* =========================================================
+   FOOTER (dünn wie Header, aber größere Typo)
+   ========================================================= */
+.site-footer { flex-shrink: 0; }
+
+.site-footer {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  padding: var(--header-pad-y) 0;   /* exakt gleiche Dicke wie Header */
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  margin-top: 2rem;
+
+  /* größere Schrift, beeinflusst Höhe NICHT (dank Padding-Variable) */
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: .4px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  line-height: 1.2;
+}
+
+.site-footer p { margin: 0; }
+
+/* =========================================================
+   LEARN / TEAM / EXTRAS
+   ========================================================= */
+
+/* Lerne uns kennen (Startseite) */
+.learn-gifs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: .75rem;
+}
+
+.gif-card {
+  display: block;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.gif-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.gif-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 18px rgba(0,0,0,.35);
+  border-color: #FFA500;
+}
+
+.learn-cta { text-align: center; margin-top: .5rem; }
+
+/* TEAM */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 1rem;
+}
+
+.member {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.member:hover {
+  transform: translateY(-2px);
+  border-color: #FFA500;
+  box-shadow: 0 10px 20px rgba(0,0,0,.35);
+}
+
+.member .media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+.member .media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.member .bio {
+  padding: 12px 14px 16px;
+  text-align: left;
+}
+.member .bio h3 { margin: 0 0 6px; }
+.member .bio p { margin: 0; opacity: .95; }
+
+/* Chips fürs erweiterte Team */
+.chip-list {
+  list-style: none;
+  padding: 0; margin: .5rem 0 0;
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center;
+}
+.chip-list li {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+}
+
+/* Balken-Link zu Geschichte */
+.bridge { padding: 0; margin: 0; }
+.bridge-link {
+  display: block;
+  text-align: center;
+  padding: 28px 16px;
+  background: linear-gradient(90deg, #FFA500 0%, #ffb733 100%);
+  color: #111;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.bridge-link:hover { filter: brightness(1.03); }

@@ -5,30 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fun Saver</title>
 
-  <!-- Adobe Fonts (AM Novecento) -->
+  <!-- Adobe Fonts (dein gemeinsamer Kit) -->
   <link rel="stylesheet" href="https://use.typekit.net/dtm0kbz.css">
-  <!-- Global Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="css/base.css" />
-  <!-- Page Styles -->
   <link rel="stylesheet" href="css/index.css" />
 </head>
-<body>
+<body class="home">
 
-  <!-- Vollbild-Video ganz oben -->
+  <!-- Hero: Vollbild-Video mit eingebettetem Loop -->
   <section class="hero-video">
-    <video src="videos/heroshot.mp4" autoplay muted loop playsinline></video>
+    <video
+      src="videos/heroshot.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="images/hero-poster.jpg"
+    ></video>
     <div class="hero-overlay">
-      <h1>Fun Saver</h1>
-      <p>Den Moment sichern. Gemeinsam feiern.</p>
+      <h1 class="wordmark">Fun Saver</h1>
+      <p class="claim">Geiler Ballwechsel verpasst. Denkste, hau auf den Buzzer!</p>
     </div>
   </section>
+  
 
-  <!-- Header (unter dem Video) -->
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Fun Saver Logo" />
-      </a>
+      <a href="index.html" class="logo-text">Fun Saver</a>
       <nav>
         <a href="anleitung.html">Anleitung</a>
         <a href="team.html">Team</a>
@@ -41,34 +47,38 @@
   <!-- Dein Moment -->
   <section class="moment container">
     <h2>Dein Moment</h2>
+  
     <div class="video-grid">
-      <div class="video-main placeholder">VIDEO 1 (groß)</div>
-      <div class="video-thumbs">
-        <div class="thumb placeholder">VIDEO 2</div>
-        <div class="thumb placeholder">VIDEO 3</div>
-        <div class="thumb placeholder">VIDEO 4</div>
-        <div class="thumb placeholder">VIDEO 5</div>
+      <div class="video-main">
+        <video id="mainVideo" controls playsinline style="width:100%;height:100%;border-radius:12px;object-fit:cover;"></video>
       </div>
+  
+      <div class="video-thumbs" id="thumbs"></div>
     </div>
+  
     <div class="cta">
       <a class="btn" href="anleitung.html">Zur Anleitung</a>
     </div>
   </section>
+  
+  <script src="js/videos.js" defer></script>
+  
 
   <!-- Warm-up -->
   <section class="warn container">
     <h2>Wichtig: Bitte richtig einwärmen</h2>
     <p>Schau dir unsere kurzen Warm-up-Clips an, bevor du loslegst.</p>
     <div class="warmups">
-      <video class="warm" src="videos/warmup1.mp4" autoplay muted loop></video>
-      <video class="warm" src="videos/warmup2.mp4" autoplay muted loop></video>
-      <video class="warm" src="videos/warmup3.mp4" autoplay muted loop></video>
+      <video class="warm" src="videos/warmup1.mp4" autoplay muted loop playsinline></video>
+      <video class="warm" src="videos/warmup2.mp4" autoplay muted loop playsinline></video>
+      <video class="warm" src="videos/warmup3.mp4" autoplay muted loop playsinline></video>
     </div>
   </section>
 
   <!-- Hydration -->
   <section class="cards container">
     <h2>Hydration</h2>
+    <p class="section-hint">Unsere Spieltisch-Getränke – Kult, praktisch, ehrlich.</p>
     <div class="gallery">
       <figure>
         <img src="images/elmer.webp" alt="Elmer Citro" />
@@ -88,6 +98,7 @@
   <!-- Powerfood -->
   <section class="cards container">
     <h2>Powerfood</h2>
+    <p class="section-hint">Energie, wenn’s lang wird – unsere Lieblingssnacks.</p>
     <div class="gallery">
       <figure>
         <img src="images/denner.png" alt="Hörnlisalat aus dem Denner" />
@@ -104,12 +115,26 @@
     </div>
   </section>
 
+  <!-- Lerne uns kennen -->
+  <section class="container learn">
+    <h2>Lerne uns kennen</h2>
+    <p class="learn-intro">Wer hinter Fun Saver steckt – kurz, knackig, echt. Mehr auf der Team-Seite.</p>
+    <div class="learn-gifs">
+      <a href="team.html" class="gif-card"><img src="images/team1.gif" alt="Team GIF 1"></a>
+      <a href="team.html" class="gif-card"><img src="images/team2.gif" alt="Team GIF 2"></a>
+      <a href="team.html" class="gif-card"><img src="images/team3.gif" alt="Team GIF 3"></a>
+    </div>
+    <p class="learn-cta"><a class="btn" href="team.html">Zum Team</a></p>
+  </section>
+
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>Danke an: Aaron und Jan</p>
+      <p>Bergselaan 340-B, 3038 CP Rotterdam, Niederlande</p>
     </div>
   </footer>
 
+  <!-- Kein hero-video.js mehr nötig -->
   <script src="js/click-sound.js" defer></script>
 </body>
 </html>
