@@ -1,14 +1,63 @@
-/* Team-Grid – befüllbar mit Cards/GIFs */
-.team-grid {
+/* =========================================================
+   TEAM.CSS – Styles nur für die Teamseite
+   ========================================================= */
+
+/* Personen-Grid (mit Textspalten) */
+.people-grid.people-grid--wide {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
-.member {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+@media (max-width: 1000px) { .people-grid.people-grid--wide { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 650px)  { .people-grid.people-grid--wide { grid-template-columns: 1fr; } }
+
+/* Person Card mit Text */
+.person-card.person-card--withtext {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: 12px;
-  padding: 16px;
+  overflow: hidden;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.person-card.person-card--withtext:hover {
+  transform: translateY(-2px);
+  border-color: #FFA500;
+  box-shadow: 0 10px 20px rgba(0,0,0,.35);
+}
+
+/* Video-Container (9:16) */
+.person-card.person-card--withtext .media {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  overflow: hidden;
+}
+.person-card.person-card--withtext .media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* 🔶 NAMEN (h3) – deutlich größer & mittig */
+.person-card.person-card--withtext h3 {
+  margin: 18px 0 10px;
+  font-family: "am-novecento", sans-serif;
+  text-transform: uppercase;
+  color: #FFA500;
   text-align: center;
+
+  /* größer als base.css */
+  font-size: clamp(28px, 3.8vw, 40px);
+  letter-spacing: .5px;
+}
+
+/* Beschreibungstext */
+.person-card.person-card--withtext p {
+  margin: 0 14px 18px;
+  font-size: 1rem;
+  opacity: .96;
 }

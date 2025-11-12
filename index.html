@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fun Saver</title>
 
-  <!-- Adobe Fonts (dein gemeinsamer Kit) -->
+  <!-- Adobe Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/dtm0kbz.css">
   <!-- Styles -->
   <link rel="stylesheet" href="css/base.css" />
@@ -13,7 +13,7 @@
 </head>
 <body class="home">
 
-  <!-- Hero: Vollbild-Video mit eingebettetem Loop -->
+  <!-- Hero -->
   <section class="hero-video">
     <video
       src="videos/heroshot.mp4"
@@ -29,7 +29,6 @@
       <p class="claim">Geiler Ballwechsel verpasst. Denkste, hau auf den Buzzer!</p>
     </div>
   </section>
-  
 
   <!-- Header -->
   <header class="site-header">
@@ -47,22 +46,20 @@
   <!-- Dein Moment -->
   <section class="moment container">
     <h2>Dein Moment</h2>
-  
+
     <div class="video-grid">
       <div class="video-main">
         <video id="mainVideo" controls playsinline style="width:100%;height:100%;border-radius:12px;object-fit:cover;"></video>
       </div>
-  
       <div class="video-thumbs" id="thumbs"></div>
     </div>
-  
+
     <div class="cta">
       <a class="btn" href="anleitung.html">Zur Anleitung</a>
     </div>
   </section>
-  
+
   <script src="js/videos.js" defer></script>
-  
 
   <!-- Warm-up -->
   <section class="warn container">
@@ -115,16 +112,35 @@
     </div>
   </section>
 
-  <!-- Lerne uns kennen -->
-  <section class="container learn">
-    <h2>Lerne uns kennen</h2>
-    <p class="learn-intro">Wer hinter Fun Saver steckt – kurz, knackig, echt. Mehr auf der Team-Seite.</p>
-    <div class="learn-gifs">
-      <a href="team.html" class="gif-card"><img src="images/team1.gif" alt="Team GIF 1"></a>
-      <a href="team.html" class="gif-card"><img src="images/team2.gif" alt="Team GIF 2"></a>
-      <a href="team.html" class="gif-card"><img src="images/team3.gif" alt="Team GIF 3"></a>
+  <!-- Das FunSaver-Team (3 Video-Karten + Button) -->
+  <section class="container">
+    <h2>Das FunSaver-Team</h2>
+    <div class="people-grid">
+      <figure class="person-card">
+        <div class="media">
+          <video src="videos/simonvideo.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <figcaption>Simon</figcaption>
+      </figure>
+
+      <figure class="person-card">
+        <div class="media">
+          <video src="videos/nickvideo.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <figcaption>Nick</figcaption>
+      </figure>
+
+      <figure class="person-card">
+        <div class="media">
+          <video src="videos/sigivideo.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <figcaption>Sigi</figcaption>
+      </figure>
     </div>
-    <p class="learn-cta"><a class="btn" href="team.html">Zum Team</a></p>
+
+    <p class="learn-cta" style="margin-top:1rem;">
+      <a class="btn" href="team.html">Das FunSaver-Team</a>
+    </p>
   </section>
 
   <!-- Footer -->
@@ -134,7 +150,11 @@
     </div>
   </footer>
 
-  <!-- Kein hero-video.js mehr nötig -->
   <script src="js/click-sound.js" defer></script>
+  <script>
+    document.querySelectorAll('.person-card video').forEach(v => {
+      v.addEventListener('loadeddata', () => v.classList.add('loaded'));
+    });
+  </script> 
 </body>
 </html>
