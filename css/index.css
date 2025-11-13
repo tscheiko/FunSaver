@@ -35,7 +35,7 @@
   color: #fff;
   padding: 1rem;
   background: none;
-  transform: translateY(24%);  /* <– HIER: verschiebt den Text weiter runter */
+  transform: translateY(24%);
 }
 
 .hero-overlay .wordmark {
@@ -57,24 +57,31 @@
 /* Mobile Anpassung */
 @media (max-width: 768px) {
   .hero-video { height: 60svh; min-height: 55vh; }
-  .hero-overlay { transform: translateY(14%); } /* etwas weniger Abstand mobil */
+  .hero-overlay { transform: translateY(14%); }
 }
 
-
-/* === "Dein Moment" (wie gehabt) === */
+/* === "Dein Moment" === */
 .video-grid { display: grid; gap: 18px; }
 .video-main {
   height: 360px;
   border-radius: 12px;
   background: rgba(255,255,255,.06);
-  display: flex; align-items: center; justify-content: center;
-  color: #bbb; border: 1px dashed rgba(255,255,255,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  border: 1px dashed rgba(255,255,255,.15);
 }
 .video-thumbs { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
 .thumb {
-  height: 120px; border-radius: 12px; background: rgba(255,255,255,.06);
-  display:flex; align-items:center; justify-content:center;
-  color:#bbb; border: 1px dashed rgba(255,255,255,.15);
+  height: 120px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#bbb;
+  border: 1px dashed rgba(255,255,255,.15);
 }
 @media (max-width:800px){
   .video-main{ height: 240px; }
@@ -84,8 +91,24 @@
 .cta { margin: 16px 0 8px; }
 
 /* Warmups */
-.warmups { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.warm { width: 250px; height: auto; border-radius: 12px; box-shadow: 0 0 8px rgba(0,0,0,.3); object-fit: cover; }
+.warn p {
+  text-align: center;         /* <<< Warmup-Text mittig */
+}
+
+.warmups {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.warm {
+  width: 250px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,.3);
+  object-fit: cover;
+}
 
 /* Galerien */
 .gallery {
@@ -97,15 +120,25 @@
 }
 .gallery figure { text-align: center; color: white; margin: 0; }
 .gallery img {
-  width: 200px; height: 200px;
-  object-fit: contain; background: transparent; border: none; border-radius: 0;
-  box-shadow: none; transition: transform .25s ease; cursor: pointer;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform .25s ease;
+  cursor: pointer;
 }
 .gallery img:hover { transform: scale(1.08); }
-.gallery figcaption { margin-top: .7rem; font-size: 1.1rem; font-weight: 500; color: white; }
+.gallery figcaption {
+  margin-top: .7rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+}
 
 /* === Video-Galerie (Startseite) === */
-
 .video-main {
   height: 360px;
   border-radius: 12px;

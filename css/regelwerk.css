@@ -1,36 +1,42 @@
-/* Regeln-Liste */
-.rules h1 {
-  text-align: center;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
+/* =========================================================
+   REGELWERK.CSS – nur extras für Regel-Seite
+   ========================================================= */
 
-.rule-list {
-  list-style: decimal;
-  list-style-position: inside;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 12px;
-}
-
-.rule-list li {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 12px;
-  padding: 12px 14px;
-  line-height: 1.5;
-  transition: transform .18s ease, box-shadow .18s ease,
-              background .18s ease, color .18s ease, border-color .18s ease;
-}
-.rule-list li:hover {
-  transform: scale(1.03);
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #111;
-  box-shadow: 0 6px 14px rgba(0,0,0,.35);
-}
-
-@media (hover:none) {
-  .rule-list li:hover { transform: none; }
-}
+   .rules h1 {
+    margin-top: 3.5rem;       /* etwas mehr Luft zum Header */
+    margin-bottom: 2rem;
+  }
+  
+  .rule-list {
+    list-style: decimal;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  
+  .rule-list li {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 12px 14px;
+    line-height: 1.5;
+    transition: transform .18s ease, box-shadow .18s ease,
+                background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  
+  .rule-list li:hover {
+    transform: scale(1.03);
+    background: #FFA500;
+    border-color: #FFA500;
+    color: #111;
+    box-shadow: 0 6px 14px rgba(0,0,0,.35);
+  }
+  
+  @media (hover: none) {
+    .rule-list li:hover {
+      transform: none;
+    }
+  }
+  

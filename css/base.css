@@ -9,7 +9,7 @@
 
   --fs-h1: clamp(40px, 6vw, 72px);
   --fs-h2: clamp(28px, 4.5vw, 42px);
-  --fs-h3: clamp(24px, 4vw, 36px); /* ← h3 allgemein größer */
+  --fs-h3: clamp(24px, 4vw, 36px); /* h3 allgemein größer */
 
   --space-xxs: .25rem;
   --space-xs: .5rem;
@@ -20,23 +20,36 @@
   --space-xxl: 3rem;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; background: #20214F; }
+/* === Grundlayout === */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #20214F;
+}
 
 body {
-  background-color: #20214F;
+  background-color: #20214F; /* RAL 5002 Ultramarinblau */
   color: white;
-  margin: 0;
   font-family: "haas unica", sans-serif;
   cursor: url('../images/cursor.png') 10 5, auto;
 
+  /* Sticky-Footer-Layout */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-main { flex: 1 0 auto; }
+/* Hauptinhalt füllt den Platz */
+main {
+  flex: 1 0 auto;
+}
 
+/* Standard-Container */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -47,15 +60,36 @@ main { flex: 1 0 auto; }
 /* =========================================================
    HEADER
    ========================================================= */
+
 .site-header {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   padding: var(--header-pad-y) 0;
-  position: sticky;
-  top: 0;
   z-index: 100;
 }
-.site-header .container { padding: 0 var(--header-pad-x); }
+
+/* Seitenränder im Header */
+.site-header .container {
+  padding: 0 var(--header-pad-x);
+}
+
+/* Startseite: Header verhält sich normal (unter dem Hero, nicht fix) */
+body.home .site-header {
+  position: static;
+}
+
+/* Alle anderen Seiten: Header fix oben */
+body:not(.home) .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Damit der Inhalt auf Unterseiten nicht unter den Header rutscht */
+body:not(.home) main {
+  padding-top: calc(2 * var(--header-pad-y) + 3rem);
+}
 
 .nav {
   display: flex;
@@ -73,7 +107,10 @@ main { flex: 1 0 auto; }
   text-transform: uppercase;
   transition: color 0.3s;
 }
-.logo-text:hover { color: #FFA500; }
+
+.logo-text:hover {
+  color: #FFA500;
+}
 
 nav a {
   color: white;
@@ -86,18 +123,33 @@ nav a {
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
-nav a:hover { color: #FFA500; }
+
+nav a:hover {
+  color: #FFA500;
+}
 
 @media (max-width: 768px) {
-  .site-header { padding: 0.6rem 0; }
-  .logo-text { font-size: 1.6rem; }
-  nav a { font-size: 1rem; margin: 0 10px; }
+  .site-header {
+    padding: 0.6rem 0;
+  }
+
+  .logo-text {
+    font-size: 1.6rem;
+  }
+
+  nav a {
+    font-size: 1rem;
+    margin: 0 10px;
+  }
 }
 
 /* =========================================================
    TYPOGRAFIE
    ========================================================= */
-h1, h2, h3 {
+
+h1,
+h2,
+h3 {
   margin: 0 0 var(--space-m);
   text-align: center;
   color: #FFA500;
@@ -106,20 +158,43 @@ h1, h2, h3 {
   letter-spacing: .5px;
   text-transform: uppercase;
 }
-h1 { font-size: var(--fs-h1); margin-top: var(--space-xl); }
-h2 { font-size: var(--fs-h2); margin-top: var(--space-l); }
-h3 { font-size: var(--fs-h3); margin-top: var(--space-m); }
 
-p, ul, ol {
+h1 {
+  font-size: var(--fs-h1);
+  margin-top: var(--space-xl);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  margin-top: var(--space-l);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  margin-top: var(--space-m);
+}
+
+p,
+ul,
+ol {
   font-family: "haas unica", sans-serif;
   margin: 0 0 var(--space-m);
   line-height: 1.6;
 }
-ul, ol { padding-left: 1.2rem; }
 
-section { padding: var(--space-xl) 0; }
+ul,
+ol {
+  padding-left: 1.2rem;
+}
 
-.hero-video { padding: 0 !important; }
+section {
+  padding: var(--space-xl) 0;
+}
+
+/* Hero-Section (Startseite) soll ihr eigenes Padding haben */
+.hero-video {
+  padding: 0 !important;
+}
 
 .section-hint {
   margin-top: .25rem;
@@ -131,6 +206,7 @@ section { padding: var(--space-xl) 0; }
 /* =========================================================
    BUTTONS (immer mittig)
    ========================================================= */
+
 .btn {
   background-color: #FFA500;
   color: black;
@@ -144,8 +220,9 @@ section { padding: var(--space-xl) 0; }
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
   text-decoration: none;
   display: inline-block;
-  margin: 0 auto; /* ← zentriert */
+  margin: 0 auto; /* zentriert in Eltern-Container */
 }
+
 .btn:hover {
   background-color: #ffb733;
   transform: scale(1.05);
@@ -153,20 +230,26 @@ section { padding: var(--space-xl) 0; }
 }
 
 /* Zentrierung für Button-Container */
-.cta, .learn-cta, .btn-wrapper {
+.cta,
+.learn-cta,
+.btn-wrapper {
   text-align: center;
 }
 
 /* =========================================================
-   FOOTER
+   FOOTER – bleibt immer unten
    ========================================================= */
+
 .site-footer {
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(3px);
   padding: var(--header-pad-y) 0;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.18);
-  margin-top: 2rem;
+
+  /* 💡 Trick: Footer nach unten drücken */
+  margin-top: auto;
+
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: .4px;
@@ -174,22 +257,32 @@ section { padding: var(--space-xl) 0; }
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
   line-height: 1.2;
 }
-.site-footer p { margin: 0; }
+
+.site-footer p {
+  margin: 0;
+}
 
 /* =========================================================
    PEOPLE-GRID / TEAM
    ========================================================= */
+
 .people-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 18px;
   align-items: start;
 }
+
 @media (max-width: 900px) {
-  .people-grid { grid-template-columns: repeat(2, 1fr); }
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 @media (max-width: 600px) {
-  .people-grid { grid-template-columns: 1fr; }
+  .people-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .person-card {
@@ -200,6 +293,7 @@ section { padding: var(--space-xl) 0; }
   text-align: center;
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
+
 .person-card:hover {
   transform: translateY(-2px);
   border-color: #FFA500;
@@ -221,7 +315,7 @@ section { padding: var(--space-xl) 0; }
   display: block;
 }
 
-/* 🔶 Noch größere Namen, zentriert */
+/* Namen unter den Videos (Index-Seite) */
 .person-card figcaption {
   padding: 14px 12px 18px;
   font-family: "am-novecento", sans-serif;
@@ -229,17 +323,19 @@ section { padding: var(--space-xl) 0; }
   letter-spacing: .5px;
   text-transform: uppercase;
   color: #fff;
-  font-size: 2rem; /* ← deutlich größer */
+  font-size: 2rem;
   text-align: center;
 }
 
+/* Teamseite – Karten mit Text */
 .person-card--withtext h3 {
   margin: 18px 0 10px;
-  font-size: 2rem; /* ← größer */
+  font-size: 2rem;
   text-align: center;
   font-family: "am-novecento", sans-serif;
   color: #FFA500;
 }
+
 .person-card--withtext p {
   margin: 0 14px 18px;
   font-size: 1rem;

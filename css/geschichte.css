@@ -1,0 +1,45 @@
+/* =========================================================
+   GESCHICHTE.CSS – Styles für die Geschichte-Seite
+   ========================================================= */
+
+   .story-main h1 {
+    margin-top: 3.5rem;          /* mehr Abstand zum Header */
+    margin-bottom: 2rem;
+  }
+  
+  /* Text + GIF nebeneinander auf Desktop */
+  .story-block {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  
+  /* Textseite */
+  .story-text p {
+    margin-bottom: 1rem;
+  }
+  
+  /* GIF-Seite */
+  .story-gif {
+    display: flex;
+    justify-content: center;
+  }
+  .story-gif img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.35);
+  }
+  
+  /* Mobile: untereinander */
+  @media (max-width: 800px) {
+    .story-block {
+      grid-template-columns: 1fr;
+    }
+    .story-gif {
+      order: -1;            /* GIF optional nach oben – kannst du weglassen, wenn du willst */
+    }
+  }
+  
