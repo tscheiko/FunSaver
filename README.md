@@ -1,0 +1,7 @@
+Fun Saver ist ein interaktives Web und Physical Computing Projekt, das spontane Tischtennis Momente festhält. Über einen physischen Buzzer kann während eines Spiels ein Video ausgelöst werden, das automatisch gespeichert und auf der Website angezeigt wird. Das jeweils neueste Video erscheint prominent, ältere Clips sind als anwählbare Thumbnails verfügbar. Ziel des Projekts ist es, flüchtige und emotionale Ballwechsel unkompliziert zu archivieren und gemeinsam erlebbar zu machen, ohne den Spielfluss zu unterbrechen.
+
+Die Website wurde von mir entwickelt und mit HTML, CSS und JavaScript umgesetzt. Zusätzlich habe ich die serverseitige Anbindung mit PHP realisiert, um die vom Fun Saver aufgezeichneten Videos aus der Datenbank dynamisch auf der Website darzustellen.
+
+Der technische Kern des Fun Savers, also der Bau des physischen Geräts, das Video Recording sowie die Ansteuerung über TouchDesigner, wurde von Blanche und Spinne umgesetzt. 
+
+Das Aufsetzen der Website bereitete mir keine Schwierigkeiten. Der komplizierte Teil mit dem Erstellen der Datenbank, dass es funktioniert, dass die Videos in eine DB geladen werden, wenn man auf den Buzzer drückt, hat Nick mit Jan angeschaut. Die Verbindung zu meiner Seite war dann ziemlich einfach. Ich habe den Code von früheren Projekten als Hilfe benutzt und ansonsten ist mit ChatGPT beigestanden.
