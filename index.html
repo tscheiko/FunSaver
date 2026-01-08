@@ -21,7 +21,7 @@
       muted
       loop
       playsinline
-      preload="auto"
+      preload="metadata"
       poster="images/hero-poster.jpg"
     ></video>
     <div class="hero-overlay">
@@ -49,8 +49,9 @@
 
     <div class="video-grid">
       <div class="video-main">
-        <video id="mainVideo" controls playsinline style="width:100%;height:100%;border-radius:12px;object-fit:cover;"></video>
+        <video id="mainVideo" controls playsinline preload="metadata"></video>
       </div>
+
       <div class="video-thumbs" id="thumbs"></div>
     </div>
 
