@@ -9,7 +9,7 @@
 
   --fs-h1: clamp(40px, 6vw, 72px);
   --fs-h2: clamp(28px, 4.5vw, 42px);
-  --fs-h3: clamp(24px, 4vw, 36px); /* h3 allgemein größer */
+  --fs-h3: clamp(24px, 4vw, 36px);
 
   --space-xxs: .25rem;
   --space-xs: .5rem;
@@ -20,7 +20,10 @@
   --space-xxl: 3rem;
 }
 
-/* === Grundlayout === */
+/* =========================================================
+   GRUNDLAYOUT
+   ========================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -33,23 +36,21 @@ body {
 }
 
 body {
-  background-color: #20214F; /* RAL 5002 Ultramarinblau */
+  background-color: #20214F;
   color: white;
   font-family: "haas unica", sans-serif;
   cursor: url('../images/cursor.png') 10 5, auto;
 
-  /* Sticky-Footer-Layout */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Hauptinhalt füllt den Platz */
 main {
   flex: 1 0 auto;
 }
 
-/* Standard-Container */
+/* Container */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -68,17 +69,16 @@ main {
   z-index: 100;
 }
 
-/* Seitenränder im Header */
 .site-header .container {
   padding: 0 var(--header-pad-x);
 }
 
-/* Startseite: Header verhält sich normal (unter dem Hero, nicht fix) */
+/* Startseite */
 body.home .site-header {
   position: static;
 }
 
-/* Alle anderen Seiten: Header fix oben */
+/* Unterseiten */
 body:not(.home) .site-header {
   position: fixed;
   top: 0;
@@ -86,17 +86,20 @@ body:not(.home) .site-header {
   right: 0;
 }
 
-/* Damit der Inhalt auf Unterseiten nicht unter den Header rutscht */
+/* Desktop-Abstand unter Header */
 body:not(.home) main {
   padding-top: calc(2 * var(--header-pad-y) + 3rem);
 }
 
+/* Header-Inhalt */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
+/* Logo */
 .logo-text {
   font-family: "am-novecento", sans-serif;
   font-weight: 800;
@@ -106,10 +109,17 @@ body:not(.home) main {
   font-size: 2.2rem;
   text-transform: uppercase;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .logo-text:hover {
   color: #FFA500;
+}
+
+/* Navigation (Desktop) */
+nav {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
@@ -128,7 +138,13 @@ nav a:hover {
   color: #FFA500;
 }
 
+/* =========================================================
+   MOBILE HEADER
+   Logo links – Navigation rechts untereinander
+   ========================================================= */
+
 @media (max-width: 768px) {
+
   .site-header {
     padding: 0.6rem 0;
   }
@@ -137,9 +153,30 @@ nav a:hover {
     font-size: 1.6rem;
   }
 
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
   nav a {
+    margin: 0;
     font-size: 1rem;
-    margin: 0 10px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* 👇 WICHTIG: mehr Platz wegen höherem Header */
+  body:not(.home) main {
+    padding-top: calc(2 * var(--header-pad-y) + 5.2rem);
   }
 }
 
@@ -191,7 +228,7 @@ section {
   padding: var(--space-xl) 0;
 }
 
-/* Hero-Section (Startseite) soll ihr eigenes Padding haben */
+/* Hero-Section */
 .hero-video {
   padding: 0 !important;
 }
@@ -204,7 +241,7 @@ section {
 }
 
 /* =========================================================
-   BUTTONS (immer mittig)
+   BUTTONS
    ========================================================= */
 
 .btn {
@@ -220,7 +257,7 @@ section {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
   text-decoration: none;
   display: inline-block;
-  margin: 0 auto; /* zentriert in Eltern-Container */
+  margin: 0 auto;
 }
 
 .btn:hover {
@@ -229,7 +266,6 @@ section {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Zentrierung für Button-Container */
 .cta,
 .learn-cta,
 .btn-wrapper {
@@ -237,7 +273,7 @@ section {
 }
 
 /* =========================================================
-   FOOTER – bleibt immer unten
+   FOOTER
    ========================================================= */
 
 .site-footer {
@@ -246,10 +282,7 @@ section {
   padding: var(--header-pad-y) 0;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.18);
-
-  /* 💡 Trick: Footer nach unten drücken */
   margin-top: auto;
-
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: .4px;
@@ -263,7 +296,7 @@ section {
 }
 
 /* =========================================================
-   PEOPLE-GRID / TEAM
+   PEOPLE-GRID / TEAM (Startseite)
    ========================================================= */
 
 .people-grid {
@@ -315,7 +348,7 @@ section {
   display: block;
 }
 
-/* Namen unter den Videos (Index-Seite) */
+/* Namen unter Videos (Index) */
 .person-card figcaption {
   padding: 14px 12px 18px;
   font-family: "am-novecento", sans-serif;
@@ -326,19 +359,3 @@ section {
   font-size: 2rem;
   text-align: center;
 }
-
-/* Teamseite – Karten mit Text */
-.person-card--withtext h3 {
-  margin: 18px 0 10px;
-  font-size: 2rem;
-  text-align: center;
-  font-family: "am-novecento", sans-serif;
-  color: #FFA500;
-}
-
-.person-card--withtext p {
-  margin: 0 14px 18px;
-  font-size: 1rem;
-  opacity: .96;
-}
-

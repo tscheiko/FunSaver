@@ -2,58 +2,70 @@
    GESCHICHTE.CSS – Styles für die Geschichte-Seite
    ========================================================= */
 
-   .story-main h1 {
-    margin-top: 3.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  
-  /* Alles in der Mitte halten */
-  .story-main {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  
-  /* Jeder Block: GIF oben, Text darunter, alles zentriert */
+/* Überschrift */
+.story-main h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* Container schmaler als Standard */
+.story-main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Jeder Story-Block */
+.story-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  /* WICHTIG: überschreibt base.css -> section padding */
+  padding: 0;
+
+  /* Abstand zwischen den Blöcken */
+  margin: 0.75rem 0;
+}
+
+/* GIF-Container – kontrolliert ALLE Abstände */
+.story-gif {
+  margin: 0.25rem 0; /* gleichmässig oben & unten */
+}
+
+/* GIF selbst */
+.story-gif img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.35);
+  display: block;
+}
+
+/* Textbereich */
+.story-text {
+  max-width: 46rem;
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+
+/* Absatz-Abstände – reduziert */
+.story-text p {
+  margin: 0.35rem 0;
+}
+
+/* Verhindert doppelten Abstand direkt am GIF */
+.story-text p:first-child {
+  margin-top: 0;
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile Feinschliff */
+@media (max-width: 800px) {
   .story-block {
-    display: flex;
-    flex-direction: column;     /* untereinander */
-    align-items: center;        /* horizontal zentrieren */
-    text-align: center;         /* Text zentrieren */
-    margin: 1.5rem 0;           /* Abstand zwischen den Blöcken */
+    margin: 1.25rem 0;
   }
-  
-  /* GIF-Container */
-  .story-gif {
-    order: -1;                  /* GIF vor dem Text */
-    margin-bottom: 1rem;      /* kleiner Abstand zum Text */
-  }
-  
-  /* GIF selbst */
-  .story-gif img {
-    width: 100%;
-    max-width: 520px;           /* wie gross das GIF wird */
-    border-radius: 12px;
-    box-shadow: 0 8px 18px rgba(0,0,0,.35);
-  }
-  
-  /* Textbereich */
-  .story-text {
-    max-width: 46rem;           /* damit die Zeilen nicht zu lang werden */
-    font-size: 1.12rem;         /* etwas grösserer Text */
-    line-height: 1.5;
-  }
-  
-  /* Abstände zwischen Absätzen im Text */
-  .story-text p {
-    margin: 0.35rem 0;          /* kleiner Absatzabstand */
-  }
-  
-  /* Mobile braucht hier nichts Spezielles mehr, 
-     das Layout ist sowieso schon untereinander */
-  @media (max-width: 800px) {
-    .story-block {
-      margin: 2rem 0;
-    }
-  }
-  
+}

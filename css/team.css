@@ -2,26 +2,38 @@
    TEAM.CSS – Styles nur für die Teamseite
    ========================================================= */
 
-/* Gleicher Abstand wie auf allen anderen Seiten */
-body > .container:first-of-type,
-main.container:first-of-type {
-  padding-top: 6rem; /* ← gleicher Abstand wie Geschichte/Regelwerk/Anleitung */
-}
+/* Kein extra Abstand oben – base.css regelt das schon */
 main.container:first-of-type h1 {
-  margin-top: 0; /* Kein zusätzlicher Abstand */
+  margin-top: 0;
 }
 
-/* Personen-Grid */
+/* =========================================================
+   PERSONEN-GRID
+   ========================================================= */
+
 .people-grid.people-grid--wide {
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
-@media (max-width: 1000px) { .people-grid.people-grid--wide { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 650px)  { .people-grid.people-grid--wide { grid-template-columns: 1fr; } }
 
-/* Person Card */
+@media (max-width: 1000px) {
+  .people-grid.people-grid--wide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .people-grid.people-grid--wide {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   PERSON CARD
+   ========================================================= */
+
 .person-card.person-card--withtext {
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.12);
@@ -30,19 +42,20 @@ main.container:first-of-type h1 {
   text-align: left;
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
+
 .person-card.person-card--withtext:hover {
   transform: translateY(-2px);
   border-color: #FFA500;
   box-shadow: 0 10px 20px rgba(0,0,0,.35);
 }
 
-/* Video im 9:16 Format */
 .person-card.person-card--withtext .media {
   width: 100%;
   aspect-ratio: 9 / 16;
   background: #000;
   overflow: hidden;
 }
+
 .person-card.person-card--withtext .media video {
   width: 100%;
   height: 100%;
@@ -51,8 +64,8 @@ main.container:first-of-type h1 {
   display: block;
 }
 
-/* 🔶 Namen sehr groß */
-.person-card.person-card--withtext h3 {
+/* Namen */
+.person-card.person-card--withtext h2 {
   margin: 18px 0 10px;
   font-family: "am-novecento", sans-serif;
   text-transform: uppercase;
@@ -68,7 +81,7 @@ main.container:first-of-type h1 {
   opacity: .96;
 }
 
-/* Button weiter unten */
+/* Button */
 .team-button-space {
   margin-top: 1.5rem !important;
 }
@@ -127,8 +140,8 @@ main.container:first-of-type h1 {
   margin-top: .4rem;
 }
 
-/* ❌ Kein horizontales Scrollen auf Mobile */
-html, body {
+/* Mobile Fix */
+html,
+body {
   overflow-x: hidden;
 }
-

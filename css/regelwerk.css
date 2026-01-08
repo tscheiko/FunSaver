@@ -3,9 +3,9 @@
    ========================================================= */
 
    .rules h1 {
-    margin-top: 3.5rem;       /* etwas mehr Luft zum Header */
-    margin-bottom: 2rem;
+    margin-top: 0;        /* nichts extra, base.css regelt das */
   }
+  
   
   .rule-list {
     list-style: decimal;
