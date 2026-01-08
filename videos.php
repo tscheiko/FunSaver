@@ -1,41 +1,47 @@
 <?php
-// videos.php – liefert die neuesten Records als JSON
+// =====================================================
+// videos.php – liefert die neuesten FunSaver-Videos als JSON
+// =====================================================
 
 header('Content-Type: application/json; charset=utf-8');
 
 require __DIR__ . '/config.php';
 
-// Neueste zuerst (timestamp DESC). Du kannst LIMIT 10 o.ä. setzen
-$sql = "SELECT id, url, timestamp 
-        FROM records 
-        ORDER BY timestamp DESC";
+try {
+    // Neueste Videos zuerst
+    $sql = "
+        SELECT id, url, timestamp
+        FROM records
+        ORDER BY timestamp DESC
+    ";
 
-$stmt   = $pdo->query($sql);
-$rows   = $stmt->fetchAll();
-$videos = [];
+    $stmt = $pdo->query($sql);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($rows as $row) {
-    $url = trim($row['url']);
+    $videos = [];
 
-    // Beispiele aus deinem Screenshot: "funsaver.ch/records/demopic.png"
-    // → wir machen daraus "https://funsaver.ch/records/demopic.png"
-    if (strpos($url, 'http://') !== 0 && strpos($url, 'https://') !== 0) {
-        // Wenn kein Protokoll drin ist
-        if (strpos($url, 'funsaver.ch') === 0) {
-            $url = 'https://' . $url;
-        } elseif ($url[0] !== '/') {
-            // falls nur "records/..." drinsteht
-            $url = 'https://funsaver.ch/' . $url;
-        } else {
-            $url = 'https://funsaver.ch' . $url;
-        }
+    foreach ($rows as $row) {
+        // Egal was in der DB steht → wir nehmen nur den Dateinamen
+        $filename = basename(trim($row['url']));
+
+        // Finale, garantiert gültige URL
+        $finalUrl = 'https://funsaver.ch/records/' . $filename;
+
+        $videos[] = [
+            'id'        => (int) $row['id'],
+            'url'       => $finalUrl,
+            'timestamp' => $row['timestamp'],
+        ];
     }
 
-    $videos[] = [
-        'id'        => (int) $row['id'],
-        'url'       => $url,
-        'timestamp' => $row['timestamp'],
-    ];
-}
+    echo json_encode([
+        'videos' => $videos
+    ], JSON_UNESCAPED_SLASHES);
 
-echo json_encode(['videos' => $videos]);
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'DB error',
+        'message' => $e->getMessage()
+    ]);
+}
